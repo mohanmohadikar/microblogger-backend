@@ -1,7 +1,6 @@
 package com.mohanmmohadikar.microbloggerbackend.config;
 
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -47,20 +46,17 @@ public class AppConfig {
 
     private CorsConfigurationSource corsConfigurationSource() {
 
-        return new CorsConfigurationSource() {
-            @Override
-            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-                CorsConfiguration corsConfiguration = new CorsConfiguration();
+        return request -> {
+            CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-                corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000/"));
-                corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
-                corsConfiguration.setAllowCredentials(true);
-                corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
-                corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
-                corsConfiguration.setMaxAge(3600L);
+            corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000/"));
+            corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+            corsConfiguration.setAllowCredentials(true);
+            corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
+            corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
+            corsConfiguration.setMaxAge(3600L);
 
-                return corsConfiguration;
-            }
+            return corsConfiguration;
         };
     }
 
