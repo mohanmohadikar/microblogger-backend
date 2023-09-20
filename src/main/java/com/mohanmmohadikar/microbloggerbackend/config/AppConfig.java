@@ -34,7 +34,7 @@ public class AppConfig {
                                 .anyRequest()
                                 .permitAll()
                 )
-                .addFilterBefore(null, BasicAuthenticationFilter.class)
+                .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(corsConfig -> corsConfig.configurationSource(corsConfigurationSource()))
                 .httpBasic(Customizer.withDefaults())
