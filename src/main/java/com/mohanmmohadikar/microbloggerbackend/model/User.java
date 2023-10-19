@@ -3,12 +3,14 @@ package com.mohanmmohadikar.microbloggerbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Builder
 @Entity
 public class User {
     @Id
