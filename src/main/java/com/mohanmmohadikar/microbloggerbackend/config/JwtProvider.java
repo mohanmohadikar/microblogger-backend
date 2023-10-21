@@ -4,10 +4,13 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
 
+
+@Service
 public class JwtProvider {
 
     String key = JwtConstant.SECRET_KEY;
